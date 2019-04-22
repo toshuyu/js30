@@ -7,3 +7,4 @@ Implementation for https://github.com/toshuyu/JavaScript30
 5. [CSS Flex](https://toshuyu.github.io/js30/005-css-flex/)
 6. [...]()
 7. [JS Array](https://toshuyu.github.io/js30/007-js-array/)
+7. Console (N.A.)
