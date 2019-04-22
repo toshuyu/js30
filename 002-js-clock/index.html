@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clock-digit">
+    <span class="hour-digit"></span>:<span class="min-digit"></span>:<span class="sec-digit"></span>
+  </div>
+
+
+  <style>
+    html {
+      background-color: #999;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+
+    .wrapper, .clock-digit{
+      width: 100%;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      background-color: #666;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: rgb(153,153,153);
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transition-duration: .1s;
+      transition-timing-function: cubic-bezier(0.03, 1.67, 0.58, 1);
+    }
+    .second-hand {
+      height: 4px;
+      background: linear-gradient(90deg, #666 0%, #666 0%, rgba(9,9,121,1) 1%, rgba(9,9,121,1) 100%); 
+    }
+    .min-hand {
+      background: linear-gradient(90deg, #666 0%, #666 10%, rgba(9,9,121,1) 11%, rgba(9,9,121,1) 100%); 
+    }
+    .hour-hand {
+      background: linear-gradient(90deg, #666 0%, #666 35%, rgba(9,9,121,1) 36%, rgba(9,9,121,1) 100%); 
+    }
+    .clock-digit{
+      font-size: 10rem;
+      color: rgba(0,0,0,0.5);
+      text-shadow: 0px 0px 3px #fff, 0px 0px 3px #fff;
+    }
+
+  </style>
+
+  <script>
+    const hr = document.querySelector(".hour-hand");
+    const min = document.querySelector(".min-hand");
+    const sec = document.querySelector(".second-hand");
+
+    const hrDigit = document.querySelector(".hour-digit");
+    const minDigit = document.querySelector(".min-digit");
+    const secDigit = document.querySelector(".sec-digit");
+
+    function getTime(){
+      const now = new Date();
+      const nowH = now.getHours();
+      const nowM = now.getMinutes();
+      const nowS = now.getSeconds();
+      const hour = (nowH/12)*360+90;
+      const minute = (nowM/60)*360+90;
+      const second = (nowS/60)*360+90;
+      
+      resetDuration(hr, hour);
+      resetDuration(min, minute);
+      resetDuration(sec, second);
+
+      hr.style.transform = `rotate(${hour}deg)`;
+      min.style.transform = `rotate(${minute}deg)`;
+      sec.style.transform = `rotate(${second}deg)`;
+      
+      hrDigit.textContent = formatTime(nowH);
+      minDigit.textContent = formatTime(nowM);
+      secDigit.textContent = formatTime(nowS);
+    }
+
+    function formatTime(time){
+      return (time+'').length>1 ? time : '0'+time;
+    }
+    function resetDuration(hand, duration){
+      if(duration==90){
+        hand.style.transitionDuration='unset';
+      }else{
+        hand.style.transitionDuration='';
+      }
+    }
+    setInterval(getTime, 1000);
+
+
+  </script>
+</body>
+</html>
