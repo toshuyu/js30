@@ -12,7 +12,7 @@
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <input id="blur" type="range" name="blur" min="0" max="25" value="5" data-sizing="px">
 
     <label for="base">Base Color</label>
     <input id="base" type="color" name="base" value="#ffc600">
@@ -25,6 +25,11 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root{
+      --base: #fff;
+      --spacing: 10px;
+      --blur: 5px;
+    }
 
     body {
       text-align: center;
@@ -32,7 +37,7 @@
       color: white;
       font-family: 'helvetica neue', sans-serif;
       font-weight: 100;
-      font-size: 50px;
+      font-size: 30px;
     }
 
     .controls {
@@ -42,9 +47,46 @@
     input {
       width: 100px;
     }
+
+    img {
+      background-color: var(--base);
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+      box-sizing: border-box;
+      width: 800px;
+    }
+    .hl{
+      color: var(--base);
+    }
   </style>
 
   <script>
+    const inputs = document.querySelectorAll(".controls input");
+    function handleChange(e){
+      const suffix = e.target.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${e.target.name}`,e.target.value+suffix);
+    }
+
+    function throttle(func, thres){
+      var last, timer;
+      return function(){
+        var context = this, args = arguments, now = +new Date();
+        if(last && now < last+thres){
+          clearTimeout(timer);
+          timer = setTimeout(function(){
+            last = now;
+            func.apply(context, args);
+          }, thres);
+        }else{
+          last = now;
+          func.apply(context, args);
+        }
+      };
+    }
+
+    inputs.forEach(input => (input.addEventListener("change",handleChange)));
+    inputs.forEach(input => (input.addEventListener("mousemove",throttle(handleChange,50))));
+    
   </script>
 
 </body>
