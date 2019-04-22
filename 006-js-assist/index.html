@@ -15,8 +15,45 @@
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+(function (window, document){
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const res = [];
+  const input = document.querySelector(".search");
+  const sugg = document.querySelector(".suggestions");
+  const placeholder = `<li>Filter for a city</li><li>or a state</li>`;
 
+  fetch(endpoint)
+  .then(x=>x.json())
+  .then(x=>{
+    res.push(...x);
+  });
+
+  input.addEventListener("input", function(e){
+    if(this.value==''){
+      sugg.innerHTML = placeholder;
+      return;
+    }
+    var filtered = matchInput(this.value, res);
+    var html = filtered.map(x=>{
+      return `<li><span>${highlightInput(this.value, x.city)}, ${highlightInput(this.value, x.state)}</span><span class="population">${x.population}</span></li>`
+    }).join("");
+    sugg.innerHTML = html;
+  });
+
+  function matchInput(userInput, suggestions){
+    const reg = new RegExp(userInput, 'gi');
+    const filtered = suggestions.filter(x =>
+      x.city.match(reg) || x.state.match(reg)
+    );
+    return filtered;
+  }
+
+  function highlightInput(userInput, str){
+    const reg = new RegExp(userInput, 'gi');
+    const substr = str.match(reg);
+    return str.replace(substr, `<span class="hl">${substr}</span>`);
+  }
+})(window, document);
 </script>
 </body>
 </html>
