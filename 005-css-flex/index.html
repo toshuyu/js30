@@ -26,6 +26,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -43,19 +44,41 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex: 1 1 auto;
+      /* these two lines makes "inner text box" to be equally divided in column */
+      display: flex;
+      flex-direction: column;
     }
 
-    .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
-    .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
-    .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
-    .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
-    .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+    .panel1 { background-color: rgba(107, 15, 156, 0.78); }
+    .panel2 { background-color: rgba(38, 82, 130, 0.78); }
+    .panel3 { background-color: rgba(109, 25, 64, 0.78); }
+    .panel4 { background-color: rgba(51, 107, 33, 0.78); }
+    .panel5 { background-color: rgba(33, 46, 107, 0.78); }
 
     /* Flex Children */
     .panel > * {
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+
+      /* this four lines makes "inner text" to be centered */
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .panel >*:first-child{
+      transform: translateY(-100%);
+    }
+    .panel.open2 >*:first-child{
+      transform: translateY(0);
+    }
+    .panel >*:last-child{
+      transform: translateY(100%);
+    }
+    .panel.open2 >*:last-child{
+      transform: translateY(0);
     }
 
     .panel p {
@@ -71,6 +94,7 @@
 
     .panel.open {
       font-size: 40px;
+      flex-grow: 5;
     }
 
   </style>
@@ -105,10 +129,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll(".panel");
 
+    panels.forEach(function(p){
+      p.addEventListener("click", function(e){
+        this.classList.toggle("open");
+        panels.forEach((others) => {
+          if(others!==this){
+            others.classList.remove("open");
+          }
+        });
+      });
+      p.addEventListener("transitionend", function(e){
+        if(e.propertyName.indexOf("flex")!=-1){
+          this.classList.toggle("open2");
+        }
+      });
+    });
   </script>
-
-
-
 </body>
 </html>
