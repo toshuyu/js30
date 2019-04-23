@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <style>
+    body{
+      margin: 0;
+      font-size: 2rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container p{
+      margin: 0;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="ans"></p>
+    <p class="typing"></p>
+    <p class="hit"></p>
+  </div>
+<script>
+
+  const secretCodeArr = ["happy","sadness","angry","hungry","ocean","lake","computer","sound","kick","pencil"];
+  const secretCode = secretCodeArr[Math.floor(Math.random()*10)];
+  const hit = document.querySelector(".hit");
+  const typing = document.querySelector(".typing");
+  const ans = document.querySelector(".ans");
+  const pressedKey = [];
+  ans.textContent = `Try type "${secretCode}"`;
+  
+  document.addEventListener("keyup", function(e){
+    
+    if(pressedKey.length==secretCode.length){
+      pressedKey.shift();
+    }
+    pressedKey.push(e.key);
+    typing.textContent = `${pressedKey.join(", ")}`
+    
+    if(pressedKey.join("") === secretCode){
+      hit.textContent = "hit!";
+      pressedKey.slice(pressedKey.length);
+    }else{
+      hit.textContent = "";
+    }
+  });
+</script>
+</body>
+</html>
