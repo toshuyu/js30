@@ -96,6 +96,33 @@
   </div>
 
 <script>
+  const inbox = document.querySelector(".inbox");
+  let shiftClicked = false;
+  let lastItem = 0;
+
+  inbox.addEventListener("click", function(e){
+    if(e.target.type !== "checkbox") return;
+    var start, end;
+    
+    if(e.shiftKey){
+      start = lastItem;
+      end = parseInt(e.target.dataset.idx);
+
+      inputs.forEach(function(input, ind){
+        if((ind>start&&ind<end)||(ind<start&&ind>end)){
+          input.checked=!input.checked;
+        }
+      });
+    }
+
+    lastItem = parseInt(e.target.dataset.idx);
+  });
+  
+  const inputs = document.querySelectorAll('input[type="checkbox"]');
+  // idx should be re-assigned whenever list indice change
+  inputs.forEach(function(input, ind){
+    input.dataset.idx = ind;
+  });
 </script>
 </body>
 </html>
