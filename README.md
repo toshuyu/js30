@@ -16,3 +16,4 @@ Implementation for https://github.com/toshuyu/JavaScript30
 14. Reference vs copy (N.A.)
 15. TBA
 16. [JS Move](https://toshuyu.github.io/js30/013-js-move/)
+17. [JS Sort](https://toshuyu.github.io/js30/013-js-sort/)
