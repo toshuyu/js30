@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <style>
+      body {
+        margin: 20px;
+        font-family: sans-serif;
+      }
+      .cv{
+        display: flex;
+        justify-content: center;
+      }
+      #draw{
+        border: 1px solid #000;
+        flex:0 0 800px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+<h1>Canvas</h1>
+<div class="cv">
+    <canvas id="draw" width="800" height="600"></canvas>
+</div>
+
+<script>
+  const canvas = document.querySelector("#draw");
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = "hsl(0,100%,50%)";
+  ctx.lineWidth = 20;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  let lastX, lastY;
+  let isDrawing = false;
+  let hue = 0;
+  let lineW = 2;
+  let direction = 1;
+  canvas.addEventListener("mousedown",(e)=>{
+    isDrawing = true;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+  });
+  canvas.addEventListener("mousemove",throttle(function(e){
+    
+    if(!isDrawing)return;
+
+    hue = (hue>=360)?0:hue+1;
+    if(lineW+direction>50) direction=-1;
+    if(lineW+direction<2) direction=1;
+    lineW = lineW + direction;
+    
+
+    ctx.beginPath();
+    ctx.strokeStyle = `hsl(${hue},100%,50%)`;
+    ctx.lineWidth = lineW;
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+    
+  }, 10));
+  canvas.addEventListener("mouseup",(e)=>{
+    isDrawing = false;
+  });
+  canvas.addEventListener("mouseout",(e)=>{
+    isDrawing = false;
+  });
+
+  function throttle(func, thres){
+    var last, timer;
+    return function(){
+      var context = this, args = arguments;
+      var now = +new Date();
+      if(last && now<last+thres){
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+          last = now;
+          func.apply(context, args);
+        }, thres);
+
+      }else{
+        last = now;
+        func.apply(context, args);
+      }
+    }
+  }
+
+</script>
+
+
+
+</body>
+</html>
