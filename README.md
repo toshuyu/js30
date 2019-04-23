@@ -12,3 +12,4 @@ Implementation for https://github.com/toshuyu/JavaScript30
 10. [JS Shift](https://toshuyu.github.io/js30/010-js-shift/)
 11. TBA
 12. [JS Key](https://toshuyu.github.io/js30/012-js-key/)
+12. [JS Slide](https://toshuyu.github.io/js30/013-js-slide/)
