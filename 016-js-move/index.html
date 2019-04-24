@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥Type something here </br>and move your mouse🔥</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+    font-size: 48px;
+  }
+  </style>
+
+<script>
+  const hero = document.querySelector(".hero");
+  const h1 = hero.querySelector("h1");
+  const max = 30;
+
+  hero.addEventListener("mousemove", throttle(function(e){
+    let moveX = e.clientX;
+    let moveY = e.clientY;
+    let x = Math.floor((moveX/hero.offsetWidth - 0.5)*max); 
+    let y = Math.floor((moveY/hero.offsetHeight - 0.5)*max); 
+    
+    h1.style.textShadow = `${x}px ${y}px 5px rgba(0,0,0,0.5)`;
+  },40));
+  
+  function throttle(func, thres){
+    var last = null, timer;
+    return function(){
+      var context = this, args = arguments;
+      var now=+new Date();
+      if(last && now<last+thres){
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+          func.apply(context, args);
+          last = now;
+        }, thres);
+      }else{
+        func.apply(context, args);
+        last = now;
+      }
+    };
+  }
+</script>
+</body>
+</html>
