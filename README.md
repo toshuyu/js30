@@ -17,3 +17,16 @@ Implementation for https://github.com/toshuyu/JavaScript30
 15. TBA
 16. [JS Move](https://toshuyu.github.io/js30/013-js-move/)
 17. [JS Sort](https://toshuyu.github.io/js30/013-js-sort/)
+18. [JS reduce](https://toshuyu.github.io/js30/018-js-reduce/)
+19. 
+20. [JS Speech](https://toshuyu.github.io/js30/020-js-speech/) (Server needed)
+21. 
+22. 
+23. 
+24. 
+25.  
+26. 
+27. 
+28. 
+29. 
+30. 
