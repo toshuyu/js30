@@ -15,12 +15,12 @@ Implementation for https://github.com/toshuyu/JavaScript30
 13. [JS Slide](https://toshuyu.github.io/js30/013-js-slide/)
 14. Reference vs copy (N.A.)
 15. TBA
-16. [JS Move](https://toshuyu.github.io/js30/013-js-move/)
-17. [JS Sort](https://toshuyu.github.io/js30/013-js-sort/)
+16. [JS Move](https://toshuyu.github.io/js30/016-js-move/)
+17. [JS Sort](https://toshuyu.github.io/js30/017-js-sort/)
 18. [JS reduce](https://toshuyu.github.io/js30/018-js-reduce/)
 19. 
 20. [JS Speech](https://toshuyu.github.io/js30/020-js-speech/) (Server needed)
-21. 
+21. [JS Geo](https://toshuyu.github.io/js30/021-js-geo/) (Server needed)
 22. 
 23. 
 24. 
