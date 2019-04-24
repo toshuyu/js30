@@ -21,7 +21,7 @@ Implementation for https://github.com/toshuyu/JavaScript30
 19. 
 20. [JS Speech](https://toshuyu.github.io/js30/020-js-speech/) (Server needed)
 21. [JS Geo](https://toshuyu.github.io/js30/021-js-geo/) (Server needed)
-22. 
+22. [CSS link](https://toshuyu.github.io/js30/022-css-link/)
 23. 
 24. 
 25.  
