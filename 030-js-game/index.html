@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack A Mole!</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <div class="s"><button class="start" onClick="startGame()">Start!</button></div>
+
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+
+<script>
+  const holes = document.querySelectorAll('.hole');
+  const scoreBoard = document.querySelector('.score');
+  const moles = document.querySelectorAll('.mole');
+  const button = document.querySelector('.start');
+  let score = 0;
+
+  holes.forEach(hole=>{
+    hole.addEventListener("click", function(e){
+      if(e.isTrusted && this.classList.contains("up")){
+        score++;
+        scoreBoard.textContent = score;
+        this.classList.remove("up");
+      }
+    });
+  });
+
+  // way 1
+  // setInterval(function(){
+  //   holes.forEach(hole=>{
+  //     let show = Math.random()>0.5 ? true : false;
+  //     let hide = Math.random()>0.5 ? true : false;
+  //     if(hole.classList.contains("up")){
+  //       if(hide){
+  //         hole.classList.remove("up");
+  //       }
+  //     }else{
+  //       if(show){
+  //         hole.classList.add("up");
+  //       }
+  //     }
+  //   });
+  // }, 300);
+  
+  // way 2
+  // setInterval(function(){
+  //   let rand = [0,0,0,0,0,0];
+  //   rand[Math.round((Math.random()*5))] = 1;
+  //   holes.forEach((hole,i)=>{
+  //     console.log(i, rand[i]);
+  //     if(rand[i]==1){
+  //       hole.classList.add("up");
+  //     }else{
+  //       hole.classList.remove("up");
+  //     }
+  //   });
+  // },500);
+
+  // way 3
+  function rand(min, max){
+    return Math.round(Math.random()*(max-min)+min);
+  }
+  let stop = false;
+  let lastHole = null;
+
+  function proceed(){
+    
+    const randomTimeMs = rand(500,1000);
+    let randomHole;
+    do {
+      randomHole = holes[rand(0,5)];
+    } while(lastHole==randomHole);
+    
+    randomHole.classList.add("up");
+
+    setTimeout(function(){
+      randomHole.classList.remove("up");
+      if(!stop){
+        proceed();
+      }
+    }, randomTimeMs);
+
+    lastHole = randomHole;
+  }
+  function startGame(){
+    stop = false;
+    const totalTime = 12;
+    let counter = totalTime;
+    button.disabled = true;
+    score = 0;
+    scoreBoard.textContent = score;
+    proceed();
+
+    setTimeout(function(){
+      stop = true;
+      counter = totalTime;
+      button.textContent = "start";
+      button.disabled = false;
+      clearInterval(timer);
+    }, totalTime*1000);
+
+    const timer = setInterval(function(){
+      counter--;
+      button.textContent = '00:'+(counter<10?'0':'')+counter;
+    },1000);
+  }
+
+
+</script>
+</body>
+</html>
