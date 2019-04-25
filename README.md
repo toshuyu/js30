@@ -18,15 +18,15 @@ Implementation for https://github.com/toshuyu/JavaScript30
 16. [JS Move](https://toshuyu.github.io/js30/016-js-move/)
 17. [JS Sort](https://toshuyu.github.io/js30/017-js-sort/)
 18. [JS reduce](https://toshuyu.github.io/js30/018-js-reduce/)
-19. 
+19. TBA
 20. [JS Speech](https://toshuyu.github.io/js30/020-js-speech/) (Server needed)
 21. [JS Geo](https://toshuyu.github.io/js30/021-js-geo/) (Server needed)
-22. [CSS link](https://toshuyu.github.io/js30/022-css-link/)
-23. 
-24. 
-25.  
-26. 
-27. 
-28. 
-29. 
-30. 
+22. [CSS Link](https://toshuyu.github.io/js30/022-css-link/)
+23. TBA
+24. [CSS Sticky](https://toshuyu.github.io/js30/024-css-nav/)
+25. [JS Event](https://toshuyu.github.io/js30/025-js-event/)
+26. TBA
+27. TBA
+28. TBA
+29. TBA
+30. TBA
