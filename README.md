@@ -26,7 +26,7 @@ Implementation for https://github.com/toshuyu/JavaScript30
 24. [CSS Sticky](https://toshuyu.github.io/js30/024-css-nav/)
 25. [JS Event](https://toshuyu.github.io/js30/025-js-event/)
 26. TBA
-27. TBA
+27. [JS Scroll](https://toshuyu.github.io/js30/025-js-scroll/)
 28. TBA
 29. TBA
 30. TBA
