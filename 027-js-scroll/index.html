@@ -57,7 +57,7 @@
   });
   container.addEventListener("mousemove", throttle((e)=>{
     if(!isDragging) return;
-
+    e.preventDefault();
     const moveX = (e.pageX - startX)*speed;
     container.scrollLeft = scrollLeft - moveX;
 
