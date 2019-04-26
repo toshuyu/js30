@@ -28,5 +28,5 @@ Implementation for https://github.com/toshuyu/JavaScript30
 26. TBA
 27. [JS Scroll](https://toshuyu.github.io/js30/027-js-scroll/)
 28. [JS Speed](https://toshuyu.github.io/js30/028-js-speed/)
-29. TBA
+29. [JS Speed](https://toshuyu.github.io/js30/029-js-clock/)
 30. [JS Game](https://toshuyu.github.io/js30/030-js-game/)
