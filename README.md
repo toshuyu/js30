@@ -14,7 +14,7 @@ Implementation for https://github.com/toshuyu/JavaScript30
 12. [JS Key](https://toshuyu.github.io/js30/012-js-key/)
 13. [JS Slide](https://toshuyu.github.io/js30/013-js-slide/)
 14. Reference vs copy (N.A.)
-15. TBA
+15. [JS LocalStorage](https://toshuyu.github.io/js30/015-js-localSto/)
 16. [JS Move](https://toshuyu.github.io/js30/016-js-move/)
 17. [JS Sort](https://toshuyu.github.io/js30/017-js-sort/)
 18. [JS Reduce](https://toshuyu.github.io/js30/018-js-reduce/)
