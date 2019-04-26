@@ -5,7 +5,7 @@ Implementation for https://github.com/toshuyu/JavaScript30
 3. [CSS Variable](https://toshuyu.github.io/js30/003-css-var/)
 4. [JS Array](https://toshuyu.github.io/js30/004-js-array/)
 5. [CSS Flex](https://toshuyu.github.io/js30/005-css-flex/)
-6. [JS assist](https://toshuyu.github.io/js30/006-js-assist/)
+6. [JS Assist](https://toshuyu.github.io/js30/006-js-assist/)
 7. [JS Array](https://toshuyu.github.io/js30/007-js-array/)
 8. [JS Canvas](https://toshuyu.github.io/js30/008-js-canvas/)
 9. Console (N.A.)
@@ -17,8 +17,8 @@ Implementation for https://github.com/toshuyu/JavaScript30
 15. TBA
 16. [JS Move](https://toshuyu.github.io/js30/016-js-move/)
 17. [JS Sort](https://toshuyu.github.io/js30/017-js-sort/)
-18. [JS reduce](https://toshuyu.github.io/js30/018-js-reduce/)
-19. TBA
+18. [JS Reduce](https://toshuyu.github.io/js30/018-js-reduce/)
+19. [JS Webcam](https://toshuyu.github.io/js30/019-js-webcam/) (Server needed)
 20. [JS Speech](https://toshuyu.github.io/js30/020-js-speech/) (Server needed)
 21. [JS Geo](https://toshuyu.github.io/js30/021-js-geo/) (Server needed)
 22. [CSS Link](https://toshuyu.github.io/js30/022-css-link/)
