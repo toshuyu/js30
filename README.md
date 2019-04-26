@@ -25,7 +25,7 @@ Implementation for https://github.com/toshuyu/JavaScript30
 23. [JS Systhesis](https://toshuyu.github.io/js30/023-js-synthesis/)
 24. [CSS Sticky](https://toshuyu.github.io/js30/024-css-nav/)
 25. [JS Event](https://toshuyu.github.io/js30/025-js-event/)
-26. TBA
+26. [JS Dropdown](https://toshuyu.github.io/js30/026-js-dropdown/)
 27. [JS Scroll](https://toshuyu.github.io/js30/027-js-scroll/)
 28. [JS Speed](https://toshuyu.github.io/js30/028-js-speed/)
 29. [JS Speed](https://toshuyu.github.io/js30/029-js-clock/)
