@@ -39,48 +39,48 @@
   let isDragging;
   let startX;
   let scrollLeft;
-  const speed=2;
+  const speed = 2;
 
-  container.addEventListener("mousedown", (e)=>{
+  container.addEventListener("mousedown", (e) => {
     isDragging = true;
     startX = e.pageX - container.offsetLeft;
     scrollLeft = container.scrollLeft;
     container.classList.add("active");
   });
-  container.addEventListener("mouseleave", (e)=>{
+  container.addEventListener("mouseleave", (e) => {
     isDragging = false;
     container.classList.remove("active");
   });
-  container.addEventListener("mouseup", (e)=>{
+  container.addEventListener("mouseup", (e) => {
     isDragging = false;
     container.classList.remove("active");
   });
-  container.addEventListener("mousemove", throttle((e)=>{
-    if(!isDragging) return;
+  container.addEventListener("mousemove", throttle((e) => {
+    if (!isDragging)
+      return;
     e.preventDefault();
-    const moveX = (e.pageX - startX)*speed;
+    const moveX = (e.pageX - startX) * speed;
     container.scrollLeft = scrollLeft - moveX;
+  }, 25));
 
-  },25));
-
-  function throttle(func, thres){
-    var timer, last;
-    return function(){
-      var now = +new Date();
-      var context= this, args = arguments;
-      if(last && now<last+thres){
+  function throttle(func, thres) {
+    let timer;
+    const last;
+    return function() {
+      const now = +new Date();
+      const context = this, args = arguments;
+      if (last && now<last+thres) {
         clearTimeout(timer);
-        timer = setTimeout(function(){
+        timer = setTimeout(() => {
           func.apply(context, args);
           last = now;
         }, thres);
-      }else{
+      } else {
         func.apply(context, args);
         last = now;
       }
     };
   }
 </script>
-
-  </body>
+</body>
 </html>
