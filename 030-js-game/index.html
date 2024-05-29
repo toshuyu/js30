@@ -109,23 +109,23 @@
   function startGame(){
     stop = false;
     const totalTime = 12;
-    let counter = totalTime;
+    const counter = totalTime;
     button.disabled = true;
     score = 0;
     scoreBoard.textContent = score;
     proceed();
 
     setTimeout(function(){
-      stop = true;
-      counter = totalTime;
-      button.textContent = "start";
-      button.disabled = false;
-      clearInterval(timer);
-    }, totalTime*1000);
+      stop = true
+      counter = totalTime
+      button.textContent = "start"
+      button.disabled = false
+      clearInterval(timer)
+    }, totalTime*1000)
 
     const timer = setInterval(function(){
       counter--;
-      button.textContent = '00:'+(counter<10?'0':'')+counter;
+      button.textContent = `00:${(counter<10?'0':'')}${counter}`;
     },1000);
   }
 
