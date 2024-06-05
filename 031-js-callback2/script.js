@@ -14,16 +14,16 @@ function fetchUserData(userId, callback) {
 
 function getUserData(userId) {
     let userData;
-    fetchUserData(userId, (error, a) => {
+    fetchUserData(userId, (error, user) => {
         if (error) {
             console.error(error);
             return;
         }
-        userData = a;
+        userData = user;
     });
     return userData;
 }
 
 // Trying to use the function
-const userDeta = getUserData(1);
-console.log(userDeta);
+const userData = getUserData(1);
+console.log(userData);
