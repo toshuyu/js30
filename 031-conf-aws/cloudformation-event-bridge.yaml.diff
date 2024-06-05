@@ -1,0 +1,52 @@
+diff --git a/031-conf-aws/cloudformation-event-bridge.yaml b/031-conf-aws/cloudformation-event-bridge.yaml
+new file mode 100644
+index 0000000..d46eb7c
+--- /dev/null
++++ b/031-conf-aws/cloudformation-event-bridge.yaml
+@@ -0,0 +1,45 @@
++AWSTemplateFormatVersion: "2010-09-09"
++
++Description: Amazon EventBridge Schedules for data-collector
++
++Parameters:
++  KmsKeyArn:
++    Type: String
++    Default: ""
++
++  TargetLambdaArn:
++    Type: String
++    Default: ""
++
++  TargetRoleArn:
++    Description: The ARN of the IAM role that EventBridge Scheduler will use for this target when the schedule is invoked
++    Type: String
++    Default: ""
++
++Resources:
++  ScheduleTenantRay:
++    Type: AWS::Scheduler::Schedule
++    Properties:
++      KmsKeyArn: !Ref KmsKeyArn
++      Name: schedule-tenant-ray
++      ScheduleExpression: "cron(0 2-23/8 * * ? *)"
++      State: ENABLED
++      FlexibleTimeWindow:
++        Mode: "OFF"
++      Target:
++        Arn: !Ref TargetLambdaArn
++        RoleArn: !Ref TargetRoleArn
++        Input: '{"tenant": "ray"}'
++  ScheduleTenantDspHelpCenter:
++    Type: AWS::Scheduler::Schedule
++    Properties:
++      KmsKeyArn: !Ref KmsKeyArn
++      Name: schedule-tenant-dsp-help-center
++      ScheduleExpression: "cron(0 0 0-23/2 * * ? *)"
++      State: ENABLED
++      FlexibleTimeWindow:
++        Mode: "OFF"
++      Target:
++        Arn: !Ref TargetLambdaArn
++        RoleArn: !Ref TargetRoleArn
++        Input: '{"tenant": "dsp-help-center"}'
+\ No newline at end of file
